@@ -1,22 +1,24 @@
-### Perma Day
+Perma Day
 =============
 
-Makes it possible to permanently have daylight without changing the game time.
-Type /pday to enable and disable permanent daylight.
+Makes it possible to permanently have day/night without changing the game time.
+Type /ptime to either enable permanent daylight, permanent night or disable permanent time.
 
 
-**Dependencies
+Dependencies
 --------------
 default (Minetest Game)
+unified_inventory?
 
 
-**License
+License
 ---------
 
 Code: MIT (https://opensource.org/licenses/MIT) by xenonca
+Media: MIT (https://opensource.org/licenses/MIT) by xenonca
 
 
-**Version
+Version
 ---------
+v1.0
 v0.1
-
