@@ -7,7 +7,7 @@ minetest.register_privilege("daylight", {
 
 unified_inventory.register_button("ptime", {
 	type = "image",
-	image = "ptime.png"
+	image = "ptime.png",
 	tooltip = ("Perma Time"),
 	hide_lite=true,
 	action = function(player)
