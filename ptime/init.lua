@@ -36,11 +36,13 @@ end
 })
 
 minetest.register_on_joinplayer(function(player)
-	local name = player:get_player_name()
+	local player_name = player:get_player_name()
 	if player:get_attribute("ptime") == "day"
 	or player:get_attribute("ptime") == "night" then
-	player:set_attribute("ptime", nil)
-	minetest.chat_send_player(name, "-!- Perma Time has been disabled.")
-		ptime(name)
+	player:set_attribute("ptime", "")
+	player:override_day_night_ratio(nil)
+	minetest.chat_send_player(player_name,
+		("-!- Perma Time has been disabled"))
+	minetest.log("Disabling Perma Time for joining player")
   end
 end)
