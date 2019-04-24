@@ -1,4 +1,4 @@
-Perma Day
+Perma Time
 =============
 
 Makes it possible to permanently have day/night without changing the game time.  
