@@ -20,5 +20,6 @@ Media: MIT (https://opensource.org/licenses/MIT) by xenonca
 
 Version
 ---------
+v1.1  
 v1.0  
 v0.1
