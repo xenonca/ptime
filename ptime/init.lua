@@ -17,7 +17,7 @@ local function ptime(name)
 		player:get_attribute("ptime") == "night" then
 		player:set_attribute("ptime", nil)
 		player:override_day_night_ratio(nil)
-		minetest.chat_send_player(name, "-!- Perma Time has been disabled.")
+		minetest.chat_send_player(name, "-!- Perma Time has been disabled")
   end
 end
 
