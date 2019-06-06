@@ -81,7 +81,8 @@ minetest.register_on_joinplayer(function(player)
 	local player_name = player:get_player_name()
 	if player:get_attribute("ptime") == "day"
 	then player:override_day_night_ratio(1)
+	minetest.chat_send_player(player_name, "-!- Perma Day enabled")
 	elseif player:get_attribute("ptime") == "night" then
 	player:override_day_night_ratio(".1")
-  end
+	minetest.chat_send_player(player_name, "-!- Perma Night has been enabled.") end
 end)
