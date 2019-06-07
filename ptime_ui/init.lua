@@ -22,14 +22,14 @@ unified_inventory.register_button("ptime", {
 				minetest.chat_send_player(player_name,
 					("-!- Perma Day enabled"))
 				minetest.log("Checked if ptime = empty, checking if ptime = day")
-					
+
 			elseif	player:get_attribute("ptime") == "day" then
 					player:set_attribute("ptime", "night")
 					player:override_day_night_ratio(.1)
 					minetest.chat_send_player(player_name,
 						("-!- Perma Night enabled"))
 					minetest.log("Checked if ptime = day, checking if ptime = night")
-						
+
 			elseif player:get_attribute("ptime") == "night" then
 					player:set_attribute("ptime", "")
 					player:override_day_night_ratio(nil)
@@ -80,11 +80,9 @@ end
 minetest.register_on_joinplayer(function(player)
 	local player_name = player:get_player_name()
 	if player:get_attribute("ptime") == "day"
-	or player:get_attribute("ptime") == "night" then
-	player:set_attribute("ptime", "")
-	player:override_day_night_ratio(nil)
-	minetest.chat_send_player(player_name,
-		("-!- Perma Time has been disabled"))
-	minetest.log("Disabling Perma Time for joining player")
-  end
+	then player:override_day_night_ratio(1)
+	minetest.chat_send_player(player_name, "-!- Perma Day enabled")
+	elseif player:get_attribute("ptime") == "night" then
+	player:override_day_night_ratio(".1")
+	minetest.chat_send_player(player_name, "-!- Perma Night has been enabled.") end
 end)
