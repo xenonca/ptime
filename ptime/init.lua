@@ -43,6 +43,6 @@ minetest.register_on_joinplayer(function(player)
 	player:override_day_night_ratio(nil)
 	minetest.chat_send_player(player_name,
 		("-!- Perma Time has been disabled"))
-	minetest.log("Disabling Perma Time for joining player")
+	minetest.log("action", "Disabling Perma Time for joining player")
   end
 end)
