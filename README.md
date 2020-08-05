@@ -2,7 +2,7 @@ Perma Time
 =============
 
 Makes it possible to permanently have day/night without changing the game time.  
-Type /ptime to either enable permanent daylight, permanent night or disable permanent time.
+Type `/ptime` to either enable permanent daylight, permanent night or disable permanent time.
 
 
 Dependencies
@@ -20,6 +20,7 @@ Media: MIT (https://opensource.org/licenses/MIT) by xenonca
 
 Version
 ---------
+v1.2  
 v1.1  
 v1.0  
 v0.1
