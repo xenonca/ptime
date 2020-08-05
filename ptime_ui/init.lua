@@ -1,5 +1,5 @@
 if minetest.global_exists("unified_inventory") then
-	minetest.log("ui exists")
+	minetest.log("action", "ui exists")
 
 minetest.register_privilege("daylight", {
     description = "Can set Perma Time"
