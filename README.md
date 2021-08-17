@@ -14,7 +14,7 @@ License
 ---------
 
 Code: [MIT](https://opensource.org/licenses/MIT) by xenonca, AnyZeeAreOkay, wsor4035
-Media: MIT (https://opensource.org/licenses/MIT) by xenonca
+Media: [MIT](https://opensource.org/licenses/MIT) by xenonca
 
 
 Version
