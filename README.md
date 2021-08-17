@@ -13,7 +13,7 @@ unified_inventory
 License
 ---------
 
-Code: MIT (https://opensource.org/licenses/MIT)
+Code: [MIT](https://opensource.org/licenses/MIT) by xenonca, AnyZeeAreOkay, wsor4035
     xenonca
     AnyZeeAreOkay
     wsor4035  
