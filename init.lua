@@ -3,28 +3,31 @@ minetest.register_privilege("daylight", {
     give_to_singleplayer = false,
 })
 
+local data = {
+    day = 1,
+    night = 0.1
+}
+
 local function ptime(name)
 	local player = minetest.get_player_by_name(name)
     local pmeta = player:get_meta()
 	if not pmeta:get("ptime") then
 		pmeta:set_string("ptime", "day")
 		player:override_day_night_ratio(1)
-		minetest.chat_send_player(name, "-!- Perma Day has been enabled")
+		minetest.chat_send_player(name, "-!- Perma day has been enabled")
     elseif pmeta:get("ptime") == "day" then
 		pmeta:set_string("ptime", "night")
 		player:override_day_night_ratio(.1)
-		minetest.chat_send_player(name, "-!- Perma Night has been enabled")
+		minetest.chat_send_player(name, "-!- Perma night has been enabled")
     elseif pmeta:get("ptime") == "night" then
 		pmeta:set_string("ptime", nil)
 		player:override_day_night_ratio(nil)
-		minetest.chat_send_player(name, "-!- Perma Time has been disabled")
+		minetest.chat_send_player(name, "-!- Perma time has been disabled")
     end
 end
 
 minetest.register_chatcommand("ptime", {
-    privs = {
-        daylight = true,
-    },
+    privs = {daylight = true},
     description = ("Set a permanent day time"),
     func = function(name)
         if not minetest.get_player_by_name(name) then
@@ -34,17 +37,24 @@ minetest.register_chatcommand("ptime", {
     end
 })
 
-minetest.register_on_joinplayer(function(player)
-	local pname = player:get_player_name()
-    local pmeta = player:get_meta()
-	if pmeta:get_string("ptime") == "day" then
-        player:override_day_night_ratio(1)
-	    minetest.chat_send_player(pname, "-!- Perma Day is enabled")
-	elseif pmeta:get_string("ptime") == "night" then
-	    player:override_day_night_ratio(".1")
-	    minetest.chat_send_player(pname, "-!- Perma Night is enabled")
+minetest.register_on_joinplayer(function(player, last_login)
+    if not last_login then return end
+    local psetting = player:get_meta():get("ptime")
+
+    if psetting then
+        player:override_day_night_ratio(data[psetting])
+        minetest.chat_send_player(player:get_player_name(), "-!- Perma " .. psetting .. " is enabled")
     end
 end)
+
+local defaultnp = minetest.settings:get("ptime.default")
+if defaultnp and (defaultnp == "day" or defaultnp == "night") then
+    minetest.register_on_newplayer(function(player)
+        player:get_meta():set_string("ptime", defaultnp)
+        player:override_day_night_ratio(data[defaultnp])
+        minetest.chat_send_player(player:get_player_name(), "-!- Perma " .. defaultnp .. " is enabled")
+    end)
+end
 
 if minetest.global_exists("unified_inventory") then
     unified_inventory.register_button("ptime", {
