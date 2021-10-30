@@ -6,18 +6,18 @@ minetest.register_privilege("daylight", {
 local function ptime(name)
 	local player = minetest.get_player_by_name(name)
     local pmeta = player:get_meta()
-	if not pmeta:get("ptime") then
-		pmeta:set_string("ptime", "day")
-		player:override_day_night_ratio(1)
-		minetest.chat_send_player(name, "-!- Perma Day has been enabled")
-    elseif pmeta:get("ptime") == "day" then
+    if pmeta:get("ptime") == "day" then
 		pmeta:set_string("ptime", "night")
 		player:override_day_night_ratio(.1)
 		minetest.chat_send_player(name, "-!- Perma Night has been enabled")
     elseif pmeta:get("ptime") == "night" then
-		pmeta:set_string("ptime", nil)
+		pmeta:set_string("ptime", "disabled")
 		player:override_day_night_ratio(nil)
 		minetest.chat_send_player(name, "-!- Perma Time has been disabled")
+    else
+        pmeta:set_string("ptime", "day")
+		player:override_day_night_ratio(1)
+		minetest.chat_send_player(name, "-!- Perma Day has been enabled")
     end
 end
 
@@ -37,7 +37,15 @@ minetest.register_chatcommand("ptime", {
 minetest.register_on_joinplayer(function(player)
 	local pname = player:get_player_name()
     local pmeta = player:get_meta()
-	if pmeta:get_string("ptime") == "day" then
+
+    if pmeta:get_string("ptime") == "" then
+        local default_int=tonumber(minetest.settings:get("ptime.default_newplayers")) or 0
+        if default_int==1 then pmeta:set_string("ptime","day")
+        elseif default_int==2 then pmeta:set_string("ptime","night")
+        else pmeta:set_string("ptime","disabled") end
+    end
+
+    if pmeta:get_string("ptime") == "day" then
         player:override_day_night_ratio(1)
 	    minetest.chat_send_player(pname, "-!- Perma Day is enabled")
 	elseif pmeta:get_string("ptime") == "night" then
