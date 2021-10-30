@@ -1,0 +1,3 @@
+# set the default value for ptime chosen for new joining players.
+# 0=ptime disabled, 1=permanent day, 2=permanent night, anything else=ptime disabled
+ptime.default_newplayers (ptime default for new players) int 0
