@@ -4,6 +4,9 @@ Perma Time
 Makes it possible to permanently have day/night without changing the game time.  
 Type `/ptime` to either enable permanent daylight, permanent night or disable permanent time.
 
+You can use the setting 'ptime.default_newplayers' to set the behavior for new joining players 
+(default: ptime disabled).
+
 
 Optional Dependencies
 --------------
