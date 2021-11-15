@@ -5,6 +5,12 @@ Makes it possible to permanently have day/night without changing the game time.
 Type `/ptime` to either enable permanent daylight, permanent night or disable permanent time.
 
 
+Settings
+--------
+ptime.default in minetest.conf can be set to day/night for new players. 
+The default is disabled
+
+
 Optional Dependencies
 --------------
 unified_inventory
